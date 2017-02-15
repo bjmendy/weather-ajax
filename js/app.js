@@ -56,14 +56,13 @@ $.ajax({
   dataType: 'json',
   success: function(data) {
     console.log(data);
+
+$('body').append('<p>' + data.name + ' Today: ' + data.weather[0].description + '</p>' + '<br>');
+$('#weather').prepend('<img id="weatherIcon" src="http://files.softicons.com/download/web-icons/android-weather-icons-by-bharath-prabhuswamy/png/256x256/Sunny.png"/>')
+$('body').append('<p>' + ' Low: ' + (((data.main.temp_min - 273.15) * 9/5) + 32) + ' Mid: ' + (((data.main.temp - 273.15) * 9/5) + 32) + ' High: ' + (((data.main.temp_max - 273.15) * 9/5) + 32) + '</p>' + '<br>');
+
   },
   fail: function(error){
 	console.log(error)
   }
 });
-
-$('body').append('<p>' + data.main.name + 'Today: ' + data.weather[0].description + '</p>' + '<br>');
-$('#weather').prepend('<img id="weatherIcon" src="http://files.softicons.com/download/web-icons/android-weather-icons-by-bharath-prabhuswamy/png/256x256/Sunny.png"/>')
-$('body').append('<p>' + data.main.temp_min + ' - ' + data.main.temp + ' - ' + data.main.temp_max + '</p>' + '<br>');
-
-
